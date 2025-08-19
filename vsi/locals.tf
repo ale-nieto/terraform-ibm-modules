@@ -15,7 +15,7 @@ locals {
   }
 
   role_codes = {
-    "frontend"    = "fa",
+    "frontend"    = "fe",
     "application" = "ap",
     "database"    = "dd",
     "loadbalancer"= "lb"
