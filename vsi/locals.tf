@@ -10,14 +10,15 @@ locals {
   ambiente = {
     "production"  = "p",
     "staging"     = "s",
-    "development" = "d"
+    "development" = "d",
+"testing" = "t"
   }
 
   role_codes = {
-    "frontend"    = "f",
-    "application" = "a",
-    "database"    = "d",
-    "loadbalancer"= "l"
+    "frontend"    = "fa",
+    "application" = "ap",
+    "database"    = "dd",
+    "loadbalancer"= "lb"
   }
 
   # Cleaner app number extraction from oficina-virtual
