@@ -1,30 +1,34 @@
 locals {
   # Naming convention logic from AP35926
-  zone_codes = {
+   zone_codes = {
     "us-south-1"   = "da1",
     "us-south-2"   = "da2",
     "washington-1" = "wa1",
     "washington-2" = "wa2"
   }
-  
-  ambiente = {
+
+  ambiente_codes = {
     "production"  = "p",
-    "staging"     = "s",
+    "qa"     = "q",
+    "testing"     = "t",
     "development" = "d"
   }
 
-  role_codes = {
-    "frontend"    = "f",
-    "application" = "a",
-    "database"    = "d",
-    "loadbalancer"= "l"
+ role_codes = {
+    "frontend"       = "fe",
+    "application"    = "ap",
+    "database"       = "db",
+    "loadbalancer"   = "lb",
+    "security_group" = "sg",
+    "cos"            = "cos",
+    "bucket"         = "bucket"
   }
 
   # Cleaner app number extraction from oficina-virtual
   app_numbers = regex("(\\d+)", var.APM)[0]
 
   # Combined name prefix construction
-  name_prefix = "${lookup(local.zone_codes, var.zone)}a${local.app_numbers}${lookup(local.ambiente, var.ambiente)}"
+  name_prefix = "${lookup(local.zone_codes, var.zone)}a${local.app_numbers}${lookup(local.ambiente_codes, var.ambiente)}"
 
   # Volume attachment logic from oficina-virtual
   vsi_indices = range(var.vsi_count)
