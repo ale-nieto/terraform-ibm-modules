@@ -30,3 +30,22 @@ variable "tags" {
   type        = list(string)
   default     = []
 }
+
+variable "db_user" {
+  description = "The username for the database user."
+  type        = string
+  default     = "dbuser"
+}
+
+variable "db_password" {  
+  description = "The password for the database user."
+  type        = string
+  sensitive   = true
+  
+}
+
+variable "service_endpoints" {
+   description = "Service endpoints for the database instance (e.g., 'public', 'private', 'public-and-private')."
+    type        = string
+    default     = "private"  
+}

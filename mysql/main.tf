@@ -7,7 +7,13 @@ resource "ibm_database" "mysql_db" {
   adminpassword     = var.admin_pass
   version           = var.mysql_version
   tags              = var.tags
-  service_endpoints = "public-and-private"
+  service_endpoints = var.service_endpoints
+
+  users {
+    name = var.db_user
+    password = var.db_password
+    type = "database"
+  }
 }
 
 data "ibm_database_connection" "db_connection" {
