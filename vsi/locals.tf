@@ -14,14 +14,11 @@ locals {
     "development" = "d"
   }
 
- role_codes = {
-    "frontend"       = "fe",
-    "application"    = "ap",
-    "database"       = "db",
-    "loadbalancer"   = "lb",
-    "security_group" = "sg",
-    "cos"            = "cos",
-    "bucket"         = "bucket"
+  role_codes = {
+    "frontend"    = "f",
+    "application" = "a",
+    "database"    = "d",
+    "loadbalancer"= "l"
   }
 
   # Cleaner app number extraction from oficina-virtual
