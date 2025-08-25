@@ -15,10 +15,10 @@ resource "ibm_database" "mysql_db" {
     type = "database"
   }
 }
-
+/* 
 data "ibm_database_connection" "db_connection" {
   deployment_id = ibm_database.mysql_db.id
   user_type     = "database"
   user_id       = ibm_database.mysql_db.adminuser
   endpoint_type = "public"
-}
+} */
