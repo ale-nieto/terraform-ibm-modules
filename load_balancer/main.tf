@@ -13,6 +13,7 @@ resource "ibm_is_lb_listener" "this" {
   port            = each.value.port
   protocol        = each.value.protocol
   default_pool    = ibm_is_lb_pool.this[each.key].id
+  certificate_instance  = each.value.protocol == "https" ? each.value.certificate_crn  : null
 }
 
 resource "ibm_is_lb_pool" "this" {

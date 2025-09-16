@@ -36,6 +36,7 @@ variable "listeners" {
     health_retries   = number
     health_timeout   = number
     health_monitor_url = optional(string, "")
+    certificate_crn = optional(string, null)
   }))
 }
 
