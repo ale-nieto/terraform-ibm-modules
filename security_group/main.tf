@@ -76,3 +76,17 @@ resource "ibm_is_security_group_rule" "egress_icmp" {
     code = each.value.code
   }
 }
+
+resource "ibm_is_security_group_rule" "ingress_any" {
+  for_each  = { for index, rule in var.rules_ingress_any : index => rule }
+  group     = ibm_is_security_group.this.id
+  direction = "inbound"
+  remote    = each.value.remote
+}
+
+resource "ibm_is_security_group_rule" "egress_any" {
+  for_each  = { for index, rule in var.rules_egress_any : index => rule }
+  group     = ibm_is_security_group.this.id
+  direction = "outbound"
+  remote    = each.value.remote
+}

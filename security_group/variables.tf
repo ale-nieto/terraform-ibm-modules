@@ -77,3 +77,19 @@ variable "rules_egress_icmp" {
   }))
   default = []
 }
+
+variable "rules_ingress_any" {
+  description = "Lista de reglas de entrada para cualquier protocolo"
+  type = list(object({
+    remote = string
+  }))
+  default = []
+}
+
+variable "rules_egress_any" {
+  description = "Lista de reglas de salida para cualquier protocolo"
+  type = list(object({
+    remote = string
+  }))
+  default = []
+}
