@@ -56,8 +56,8 @@ variable "policies" {
     action        = string
     priority      = number
     rules = list(object({
+      type      = string
       condition = string
-      type      = optional(string)
       value     = string
       field     = optional(string)
     }))
