@@ -23,6 +23,13 @@ resource "ibm_is_lb_pool" "this" {
   protocol  = coalesce(each.value.pool_protocol, each.value.protocol)
   algorithm = each.value.pool_algorithm
 
+  dynamic "session_persistence" {
+    for_each = each.value.session_persistence_type != null ? [each.value.session_persistence_type] : []
+    content {
+      type = session_persistence.value
+    }
+  }
+
   health_type        = each.value.health_type
   health_delay       = each.value.health_delay
   health_retries     = each.value.health_retries

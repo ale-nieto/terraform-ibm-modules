@@ -28,16 +28,17 @@ variable "security_group_ids" {
 variable "listeners" {
   description = "Definiciones de listeners"
   type = list(object({
-    port               = number
-    protocol           = string
-    pool_protocol      = optional(string)
-    pool_algorithm     = string
-    health_type        = string
-    health_delay       = number
-    health_retries     = number
-    health_timeout     = number
-    health_monitor_url = optional(string, "")
-    certificate_crn    = optional(string, null)
+    port                     = number
+    protocol                 = string
+    pool_protocol            = optional(string)
+    session_persistence_type = optional(string)
+    pool_algorithm           = string
+    health_type              = string
+    health_delay             = number
+    health_retries           = number
+    health_timeout           = number
+    health_monitor_url       = optional(string, "")
+    certificate_crn          = optional(string, null)
   }))
 }
 
