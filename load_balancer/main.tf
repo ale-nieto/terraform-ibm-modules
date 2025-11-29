@@ -50,15 +50,16 @@ resource "ibm_is_lb_listener_policy_rule" "this" {
   for_each = { for idx, rule in flatten([
     for p_idx, policy in var.policies : [
       for r_idx, rule in policy.rules : {
-        policy_key = "${policy.listener_port}-${p_idx}"
-        rule       = rule
-        key        = "${policy.listener_port}-${p_idx}-${r_idx}"
+        policy_key    = "${policy.listener_port}-${p_idx}"
+        listener_port = policy.listener_port
+        rule          = rule
+        key           = "${policy.listener_port}-${p_idx}-${r_idx}"
       }
     ]
   ]) : rule.key => rule }
 
   lb        = ibm_is_lb.this.id
-  listener  = ibm_is_lb_listener.this[each.value.rule.listener_port].listener_id
+  listener  = ibm_is_lb_listener.this[each.value.listener_port].listener_id
   policy    = ibm_is_lb_listener_policy.this[each.value.policy_key].policy_id
   condition = each.value.rule.condition
   type      = each.value.rule.type
