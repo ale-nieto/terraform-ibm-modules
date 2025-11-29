@@ -30,6 +30,7 @@ variable "listeners" {
   type = list(object({
     port               = number
     protocol           = string
+    pool_protocol      = optional(string)
     pool_algorithm     = string
     health_type        = string
     health_delay       = number

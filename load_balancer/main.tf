@@ -20,7 +20,7 @@ resource "ibm_is_lb_pool" "this" {
   for_each  = { for listener in var.listeners : listener.port => listener }
   lb        = ibm_is_lb.this.id
   name      = "${var.name}-pool-${each.key}"
-  protocol  = each.value.protocol
+  protocol  = coalesce(each.value.pool_protocol, each.value.protocol)
   algorithm = each.value.pool_algorithm
 
   health_type        = each.value.health_type
@@ -44,6 +44,7 @@ resource "ibm_is_lb_listener_policy" "this" {
   listener = ibm_is_lb_listener.this[each.value.listener_port].listener_id
   action   = each.value.action
   priority = each.value.priority
+  name     = "${var.name}-policy-${each.key}"
 }
 
 resource "ibm_is_lb_listener_policy_rule" "this" {
