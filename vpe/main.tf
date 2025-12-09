@@ -3,7 +3,8 @@ resource "ibm_is_virtual_endpoint_gateway" "vpe" {
   resource_group = var.resource_group_id
   vpc            = var.vpc_id
   target {
-    crn = var.target_crn
+    crn           = var.target_crn
+    resource_type = var.target_resource_type
   }
 
   # Binding to specific subnets
