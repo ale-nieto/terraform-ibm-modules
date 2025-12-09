@@ -34,3 +34,9 @@ variable "tags" {
   type        = list(string)
   default     = []
 }
+
+variable "target_resource_type" {
+  description = "The resource type of the target service (e.g., provider_cloud_services for cloud databases)"
+  type        = string
+  default     = "provider_cloud_service"
+}
