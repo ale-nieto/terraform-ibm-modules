@@ -16,7 +16,7 @@ variable "region" {
 variable "postgres_version" {
   description = "Version of the Postgres instance to provision."
   type        = string
-  default     = "14"
+  default     = "17"
 }
 
 variable "admin_pass" {

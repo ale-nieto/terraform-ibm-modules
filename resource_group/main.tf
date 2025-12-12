@@ -2,9 +2,7 @@ resource "ibm_resource_group" "rg" {
   count = var.rg_create ? 1 : 0
   name  = var.resource_group
 
-  lifecycle {
-    prevent_destroy = true
-  }
+
 }
 
 data "ibm_resource_group" "rg" {
